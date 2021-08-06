@@ -1,0 +1,12 @@
+pipeline{
+  agent any
+  stages{
+     stage('Git Checkout'){
+		git credentialsId: 'NavyaSri2599', 
+		    url: 'https://github.com/NavyaSri2599/JenkinsPipelineDemo',
+			branch: "${params.gitBranch}"
+	}
+    stage('Compile-Package'){
+      sh 'mvn package'
+  }
+}
