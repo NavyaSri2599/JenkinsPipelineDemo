@@ -5,21 +5,24 @@ pipeline {
     
          stage('Compiling Stage') {
             steps {
-            	def mvnTool = tool 'maven_3_8_1'
-              sh "${mvnTool}/bin/mvn compile" 
+            	withMaven(jdk: 'jdk1.8', maven: 'maven_3_8_1') {
+                 sh 'maven compile'
+              } 
             }
         }
     
          stage('Building Stage') {
             steps {
-            	def mvnTool = tool 'maven_3_8_1'
-              sh "${mvnTool}/bin/mvn clean install" 
+            		withMaven(jdk: 'jdk1.8', maven: 'maven_3_8_1') {
+                sh 'maven clean install'
+              } 
             }
         }
          stage('Deploying Stage') {
             steps {
-                def mvnTool = tool 'maven_3_8_1'
-                sh "${mvnTool}/bin/mvn clean deploy"
+               withMaven(jdk: 'jdk1.8', maven: 'maven_3_8_1') {
+                sh 'maven clean deploy'
+              } 
             }
         }
     }
