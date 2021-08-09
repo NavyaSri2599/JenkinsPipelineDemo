@@ -2,28 +2,24 @@ pipeline {
     agent any
 
     stages {
+    
          stage('Compiling Stage') {
             steps {
-            	withMaven(maven : 'maven_3_8_1')
-                sh 'mvn clean insta'
+            	def mvnTool = tool 'Maven_3_3_9'
+              sh "${mvnTool}/bin/mvn compile" 
             }
         }
-         stage('Testing Stage') {
+    
+         stage('Building Stage') {
             steps {
-                withMaven(maven : 'maven_3_8_1')
-                sh 'mvn test'
+            	def mvnTool = tool 'Maven_3_3_9'
+              sh "${mvnTool}/bin/mvn clean install" 
             }
         }
-         stage('Deployment Stage') {
+         stage('Deploying Stage') {
             steps {
-                withMaven(maven : 'maven_3_8_1')
-                sh 'mvn deploy'
-            }
-        }
-        stage('Release Stage') {
-            steps {
-                withMaven(maven : 'maven_3_8_1')
-                sh 'mvn release'
+                def mvnTool = tool 'Maven_3_3_9'
+                sh "${mvnTool}/bin/mvn clean deploy"
             }
         }
     }
