@@ -5,20 +5,20 @@ pipeline {
     
          stage('Compiling Stage') {
             steps {
-            	def mvnTool = tool 'Maven_3_3_9'
+            	def mvnTool = tool 'maven_3_8_1'
               sh "${mvnTool}/bin/mvn compile" 
             }
         }
     
          stage('Building Stage') {
             steps {
-            	def mvnTool = tool 'Maven_3_3_9'
+            	def mvnTool = tool 'maven_3_8_1'
               sh "${mvnTool}/bin/mvn clean install" 
             }
         }
          stage('Deploying Stage') {
             steps {
-                def mvnTool = tool 'Maven_3_3_9'
+                def mvnTool = tool 'maven_3_8_1'
                 sh "${mvnTool}/bin/mvn clean deploy"
             }
         }
