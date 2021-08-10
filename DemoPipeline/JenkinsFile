@@ -5,6 +5,8 @@ pipeline {
     
          stage('Compiling Stage') {
             steps {
+              deleteDir()
+              checkout scm
             	withMaven(jdk: 'jdk1.8', maven: 'maven_3_8_1') {
                  sh 'maven compile'
               } 
