@@ -16,6 +16,13 @@
     <java.version>1.8</java.version>
   </properties>
  
+   <distributionManagement>
+    <repository>
+        <id>PriyankaVutukuru</id>
+        <name>mphmar</name>
+        <url>https://github.com/PriyankaVutukuru/mphmar</url>
+    </repository>
+</distributionManagement>
 
   <dependencies>
     <dependency>
@@ -37,14 +44,7 @@
       <version>1.3</version>
       <scope>test</scope>
     </dependency>
-    
- <distributionManagement>
-    <repository>
-        <id>nexus-releases</id>
-        <name>releases</name>
-        <url>http://myNexus/more/stuff</url>
-    </repository>
-</distributionManagement>
+
   </dependencies>
 
   <build>
