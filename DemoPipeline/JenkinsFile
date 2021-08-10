@@ -17,14 +17,16 @@ pipeline {
          stage('Building Stage') {
             steps {
             		withMaven(jdk: 'jdk1.8', maven: 'maven_3_8_1') {
-                bat 'mvn clean install'
+                 bat '''cd DemoPipeline
+                 mvn clean install '''
               } 
             }
         }
          stage('Deploying Stage') {
             steps {
                withMaven(jdk: 'jdk1.8', maven: 'maven_3_8_1') {
-                bat 'mvn clean deploy'
+                 bat '''cd DemoPipeline 
+                 mvn clean deploy'''
               } 
             }
         }
