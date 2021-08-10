@@ -26,7 +26,7 @@ pipeline {
             steps {
                withMaven(jdk: 'jdk1.8', maven: 'maven_3_8_1') {
                  bat '''cd DemoPipeline 
-                 mvn clean deploy'''
+                 mvn deploy'''
               } 
             }
         }
