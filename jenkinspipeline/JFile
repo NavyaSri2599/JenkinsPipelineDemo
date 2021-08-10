@@ -1,0 +1,19 @@
+pipeline{
+    agent any
+        tools{
+            jdk 'jdk1.8'
+            maven 'maven_3_8_1'
+        }
+        stages{
+            stage("clone code"){
+                steps{
+                 git credentialsId: 'git_credentials', url: 'https://github.com/NavyaSri2599/JenkinsPipelineDemo.git'
+                }
+            }
+            stage("build code"){
+                steps{
+                 bat 'mvn clean install'
+                }
+            }
+        }
+    }
