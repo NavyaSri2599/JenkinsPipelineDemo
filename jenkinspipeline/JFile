@@ -4,6 +4,12 @@ pipeline{
             jdk 'jdk1.8'
             maven 'maven_3_8_1'
         }
+        environment{
+            def pom = readMavenPom file: 'pom.xml'
+            APP_ARTIFACT = pom.getArtifactId()
+            APP_VERSION = pom.getVersion()
+            APP_GROUP = pom.getGroupId()
+        }
         stages{
             stage("clone code"){
                 steps{
